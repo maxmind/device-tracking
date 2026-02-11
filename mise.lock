@@ -1,3 +1,12 @@
+[[tools."github:houseabsolute/precious"]]
+version = "0.10.1"
+backend = "github:houseabsolute/precious"
+"platforms.linux-arm64" = { checksum = "sha256:3db65f6d3b3502b3b5aaf6df889bc41bda3bb5fac09952c74d6e831652a9df8b", url = "https://github.com/houseabsolute/precious/releases/download/v0.10.1/precious-Linux-musl-arm64.tar.gz", url_api = "https://api.github.com/repos/houseabsolute/precious/releases/assets/309267455"}
+"platforms.linux-x64" = { checksum = "sha256:34e378aed182421ffacf3f06c80c1f3f7d98c4c9b61b2cacde3ea70868bccfd5", url = "https://github.com/houseabsolute/precious/releases/download/v0.10.1/precious-Linux-musl-x86_64.tar.gz", url_api = "https://api.github.com/repos/houseabsolute/precious/releases/assets/309267664"}
+"platforms.macos-arm64" = { checksum = "sha256:dbaba885c2d79d3213389c81890720bed390c37cb275cd93bd59a4a0a59721a5", url = "https://github.com/houseabsolute/precious/releases/download/v0.10.1/precious-macOS-arm64.tar.gz", url_api = "https://api.github.com/repos/houseabsolute/precious/releases/assets/309267548"}
+"platforms.macos-x64" = { checksum = "sha256:5e7a9a50d388e7d6c04bcccd654f7bcf6095a347899d308d35e7768caead6ba6", url = "https://github.com/houseabsolute/precious/releases/download/v0.10.1/precious-macOS-x86_64.tar.gz", url_api = "https://api.github.com/repos/houseabsolute/precious/releases/assets/309267052"}
+"platforms.windows-x64" = { checksum = "sha256:22f452a5559b81f4528e5cc3cc79263ca30d61af6c09e0b008c3816ff9d40760", url = "https://github.com/houseabsolute/precious/releases/download/v0.10.1/precious-Windows-msvc-x86_64.zip", url_api = "https://api.github.com/repos/houseabsolute/precious/releases/assets/309267436"}
+
 [[tools.node]]
 version = "25.6.1"
 backend = "core:node"
