@@ -1,0 +1,25 @@
+{
+  "name": "@maxmind/device-tracking",
+  "version": "0.0.1",
+  "description": "MaxMind Device Tracking Add-On",
+  "license": "Apache-2.0 OR MIT",
+  "author": "MaxMind",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxmind/device-tracking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxmind/device-tracking/issues"
+  },
+  "homepage": "https://github.com/maxmind/device-tracking#readme",
+  "keywords": [
+    "maxmind",
+    "device",
+    "tracking"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

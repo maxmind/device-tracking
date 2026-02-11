@@ -1,0 +1,17 @@
+[[tools.node]]
+version = "25.6.1"
+backend = "core:node"
+"platforms.linux-arm64" = { checksum = "sha256:90fea701897ecb424aafa2824539476598437ad9f21e649732a85cc2d955d845", url = "https://nodejs.org/dist/v25.6.1/node-v25.6.1-linux-arm64.tar.gz"}
+"platforms.linux-x64" = { checksum = "sha256:3809fdbfd54829bad363b9db8e96ca3600509e2ff20ede74181cfc1ca8451ce3", url = "https://nodejs.org/dist/v25.6.1/node-v25.6.1-linux-x64.tar.gz"}
+"platforms.macos-arm64" = { checksum = "sha256:a80cb252d170a4730f78f5950cf19a46106f156e5886e5c1cc8c5602aea60243", url = "https://nodejs.org/dist/v25.6.1/node-v25.6.1-darwin-arm64.tar.gz"}
+"platforms.macos-x64" = { checksum = "sha256:3b68f847d9d8861c7c8bfef32c540d14f6ca18bfcbf5f6495a595b9529063a9b", url = "https://nodejs.org/dist/v25.6.1/node-v25.6.1-darwin-x64.tar.gz"}
+"platforms.windows-x64" = { checksum = "sha256:0ae2300cdf44c399b5b351edbefb3534d1342a6fabd64302ca8c8e2fb86b0445", url = "https://nodejs.org/dist/v25.6.1/node-v25.6.1-win-x64.zip"}
+
+[[tools.pnpm]]
+version = "10.28.2"
+backend = "aqua:pnpm/pnpm"
+"platforms.linux-arm64" = { checksum = "sha256:6f265c811d1aef8e817e0017cd700d0d345a1100bd8a90358db64eaab2fbff85", url = "https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-linux-arm64"}
+"platforms.linux-x64" = { checksum = "sha256:9f38396f660cd3b1f71e0b0af0b7ba22dd1fd446dc37840a1b6a025868557390", url = "https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-linux-x64"}
+"platforms.macos-arm64" = { checksum = "sha256:38a23bf53d918b5192f71ed58e6df9609da478790f89b20ca5f45c3cd46d1d2c", url = "https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-macos-arm64"}
+"platforms.macos-x64" = { checksum = "sha256:2b86ff518aa100701aecb1b37b84e9ba2aaf0b7c1803dcc9b3a0f7d0681bd27d", url = "https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-macos-x64"}
+"platforms.windows-x64" = { checksum = "sha256:cc3ee9c282e72b02d7eeb2de6bf232697e3aeddb047ef0822cbcaaf33ee8c01c", url = "https://github.com/pnpm/pnpm/releases/download/v10.28.2/pnpm-win-x64.exe"}
