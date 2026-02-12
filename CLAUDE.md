@@ -62,4 +62,5 @@ src/
 
 - **mise** manages Node, pnpm, and precious versions (see `mise.toml`).
 - **precious** is the code-quality runner (config: `.precious.toml`).
+- **Git hooks** live in `.githooks/`. Enable with: `git config core.hooksPath .githooks`
 - GitHub Actions: test, lint, CodeQL, zizmor, release workflows.
