@@ -94,6 +94,59 @@ describe('trackDevice', () => {
         trackDevice({ accountId: 1, host: 'evil.com/foo#' })
       ).rejects.toThrow('host must be a valid hostname');
     });
+
+    it('rejects when host starts with a dot', async () => {
+      await expect(
+        trackDevice({ accountId: 1, host: '.evil.com' })
+      ).rejects.toThrow('host must be a valid hostname');
+    });
+
+    it('rejects when host starts with a hyphen', async () => {
+      await expect(
+        trackDevice({ accountId: 1, host: '-evil.com' })
+      ).rejects.toThrow('host must be a valid hostname');
+    });
+
+    it('rejects when host contains consecutive dots', async () => {
+      await expect(
+        trackDevice({ accountId: 1, host: 'evil..com' })
+      ).rejects.toThrow('host must be a valid hostname');
+    });
+
+    it('rejects when host is only dots', async () => {
+      await expect(trackDevice({ accountId: 1, host: '...' })).rejects.toThrow(
+        'host must be a valid hostname'
+      );
+    });
+  });
+
+  describe('disableWebglHash validation', () => {
+    it('rejects when disableWebglHash is not a boolean', async () => {
+      await expect(
+        trackDevice({
+          accountId: 1,
+          disableWebglHash: 'yes',
+        } as unknown as TrackDeviceOptions)
+      ).rejects.toThrow('disableWebglHash must be a boolean');
+    });
+
+    it('rejects when disableWebglHash is a number', async () => {
+      await expect(
+        trackDevice({
+          accountId: 1,
+          disableWebglHash: 1,
+        } as unknown as TrackDeviceOptions)
+      ).rejects.toThrow('disableWebglHash must be a boolean');
+    });
+
+    it('accepts when disableWebglHash is omitted', async () => {
+      mockTrackDevice.mockResolvedValue({ trackingToken: 'token' });
+      mockGetModule.mockResolvedValue({ trackDevice: mockTrackDevice });
+
+      await expect(trackDevice({ accountId: 1 })).resolves.toEqual({
+        trackingToken: 'token',
+      });
+    });
   });
 
   describe('successful tracking', () => {

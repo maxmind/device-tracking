@@ -13,6 +13,7 @@ import { getModule } from './loader.js';
  * @throws {Error} If options is null/undefined or not an object.
  * @throws {Error} If accountId is not a positive integer.
  * @throws {Error} If host is provided but not a valid hostname string.
+ * @throws {Error} If disableWebglHash is provided but not a boolean.
  * @throws {Error} If the remote module fails to load or times out.
  * @throws {Error} If the remote module returns an invalid result.
  */
@@ -33,11 +34,21 @@ export async function trackDevice(
     if (typeof options.host !== 'string' || options.host.length === 0) {
       throw new Error('host must be a non-empty string');
     }
-    if (!/^[a-zA-Z0-9.-]+$/.test(options.host)) {
+    if (
+      !/^[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?$/.test(options.host) ||
+      options.host.includes('..')
+    ) {
       throw new Error(
         'host must be a valid hostname (e.g. "tracking.yourdomain.com")'
       );
     }
+  }
+
+  if (
+    options.disableWebglHash !== undefined &&
+    typeof options.disableWebglHash !== 'boolean'
+  ) {
+    throw new Error('disableWebglHash must be a boolean');
   }
 
   const mod = await getModule(options.host);
