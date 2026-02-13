@@ -1,0 +1,41 @@
+name: Precious
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '3 0 * * SUN'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  precious:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: jdx/mise-action@6d1e696aa24c1aa1bcc1adea0212707c71ab78a8 # v3.6.1
+      - run: pnpm install --frozen-lockfile
+      - name: Fetch base ref
+        if: ${{ github.event.pull_request }}
+        run: git fetch origin "${BASE_REF}"
+        env:
+          BASE_REF: ${{ github.base_ref }}
+      - name: Select files
+        id: select-files
+        run: |
+          if [[ -n "${PR_NUMBER}" ]]; then
+            echo "precious-args=--git-diff-from origin/${BASE_REF}" >> "$GITHUB_OUTPUT"
+          else
+            echo 'precious-args=--all' >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.base_ref }}
+      - name: Lint files
+        run: precious lint ${PRECIOUS_ARGS}
+        env:
+          PRECIOUS_ARGS: ${{ steps.select-files.outputs.precious-args }}
