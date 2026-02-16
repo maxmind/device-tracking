@@ -27,7 +27,9 @@
     "tracking"
   ],
   "files": [
-    "dist"
+    "dist",
+    "LICENSE-APACHE",
+    "LICENSE-MIT"
   ],
   "publishConfig": {
     "access": "public"
