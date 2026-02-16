@@ -1,6 +1,6 @@
 {
   "name": "@maxmind/device-tracking",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "MaxMind Device Tracking Add-On",
   "license": "Apache-2.0 OR MIT",
   "author": "MaxMind",
@@ -27,7 +27,9 @@
     "tracking"
   ],
   "files": [
-    "dist"
+    "dist",
+    "LICENSE-APACHE",
+    "LICENSE-MIT"
   ],
   "publishConfig": {
     "access": "public"
