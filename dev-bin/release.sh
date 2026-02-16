@@ -53,7 +53,7 @@ fi
 
 changelog=$(cat CHANGELOG.md)
 
-regex='([0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+)?) \(([0-9]{4}-[0-9]{2}-[0-9]{2})\)'
+regex='([0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)?) \(([0-9]{4}-[0-9]{2}-[0-9]{2})\)'
 
 if [[ ! $changelog =~ $regex ]]; then
     echo "Could not find version/date in CHANGELOG.md!"
