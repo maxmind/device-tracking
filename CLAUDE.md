@@ -58,6 +58,15 @@ src/
 - Mocked-module tests use `jest.unstable_mockModule` + dynamic `import()` to get fresh modules.
 - Fake timers are used for timeout tests — always call `jest.useRealTimers()` in `afterEach`.
 
+## Releasing
+
+- Run `dev-bin/release.sh` from a **non-main** branch.
+- The script parses `CHANGELOG.md` for the version, date, and release notes.
+- **CHANGELOG.md format**: `VERSION (YYYY-MM-DD)` header, `---` underline, then bulleted notes. Date must be today.
+- The script bumps `package.json` version automatically via `pnpm version` — do **not** update it by hand.
+- After confirmation it commits, pushes, and creates a GitHub release.
+- The `release.yml` workflow triggers on the GitHub release event and publishes to npm.
+
 ## Tooling
 
 - **mise** manages Node, pnpm, and precious versions (see `mise.toml`).
