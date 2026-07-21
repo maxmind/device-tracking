@@ -19,23 +19,10 @@ jobs:
           persist-credentials: false
       - uses: jdx/mise-action@e6a8b3978addb5a52f2b4cd9d91eafa7f0ab959d # v4.2.0
       - run: pnpm install --frozen-lockfile
-      - name: Fetch base ref
-        if: ${{ github.event.pull_request }}
-        run: git fetch origin "${BASE_REF}"
-        env:
-          BASE_REF: ${{ github.base_ref }}
-      - name: Select files
-        id: select-files
-        run: |
-          if [[ -n "${PR_NUMBER}" ]]; then
-            echo "precious-args=--git-diff-from origin/${BASE_REF}" >> "$GITHUB_OUTPUT"
-          else
-            echo 'precious-args=--all' >> "$GITHUB_OUTPUT"
-          fi
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          BASE_REF: ${{ github.base_ref }}
+      # Always lint the whole repo, on both pushes and pull requests. Linting
+      # only a PR's changed files misses reformats the PR itself triggers
+      # outside its diff -- e.g. a dependency bump that changes a formatter
+      # version can leave unrelated files unformatted, and PR CI would not
+      # catch it. The repo is small, so linting everything is cheap.
       - name: Lint files
-        run: precious lint ${PRECIOUS_ARGS}
-        env:
-          PRECIOUS_ARGS: ${{ steps.select-files.outputs.precious-args }}
+        run: precious lint --all
